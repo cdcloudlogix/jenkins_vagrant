@@ -48,3 +48,4 @@ documentations from Vagrant / VirtualBox websites:
 * [**Vagrant**](https://www.vagrantup.com/docs/installation/).
 Follow the official guideline for installing Vagrant
 * [**VirtualBox**](https://www.virtualbox.org/)
+Follow the official guideline for installing VirtualBox
