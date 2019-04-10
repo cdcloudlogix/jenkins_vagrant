@@ -23,7 +23,7 @@ By default, VirtualBox is the default provider for Vagrant, more information in 
 You can download it with the following link:
 * [**DownloadVirtualBox**](https://download.virtualbox.org/virtualbox/6.0.4/VirtualBox-6.0.4-128413-OSX.dmg).
 
-### start your app:
+### Start your app:
 
 `vagrant up`
 
