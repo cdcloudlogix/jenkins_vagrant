@@ -1,0 +1,29 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Download latest ansible version</description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H/5 * * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/usr/bin/env bash
+
+latest_version=$(curl -s https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/  | grep -oE &apos;href=&quot;([^&quot;#]+)&quot;&apos; | grep &apos;noarch.rpm&apos; | sed &quot;s/ /%20/g&quot; | cut -f2 -d &quot;=&quot; | tail -1 | sed &apos;s/&quot;//g&apos;)
+curl -O https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/$latest_version
+</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -1,0 +1,22 @@
+---
+- name: create a folder for downloading ansible
+  file:
+    path: /var/lib/jenkins/jobs/download_ansible
+    state: directory
+    mode: 0755
+    owner: jenkins
+    group: jenkins
+
+- name: install downloading jobs
+  copy:
+    src: files/config.xml
+    dest: /var/lib/jenkins/jobs/download_ansible/config.xml
+    owner: jenkins
+    group: jenkins
+    mode: 0644
+
+- name: make sure jenkins is enable and running
+  service:
+    name: jenkins
+    enabled: yes
+    state: started

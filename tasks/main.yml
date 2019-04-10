@@ -1,0 +1,18 @@
+---
+- name: install java 8
+  dnf:
+    name: java-{{ java_version }}-openjdk
+    state: present
+
+- name: install the jenkins rpm from a remote repo
+  dnf:
+    name: "http://mirrors.jenkins-ci.org/redhat-stable/jenkins-{{ jenkins_version }}.1-1.1.noarch.rpm"
+    state: present
+
+- name: add sysconfig jenkins file
+  copy:
+    src: files/jenkins
+    dest: /etc/sysconfig/jenkins
+    owner: root
+    group: root
+    mode: 0600
